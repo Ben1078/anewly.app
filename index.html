@@ -693,7 +693,7 @@
           "copy"
           "visual"
           "facts";
-        gap: 90px;
+        gap: 80px;
       }
 
       .hero-copy { max-width: 820px; }
@@ -712,6 +712,8 @@
     }
 
     @media (max-width: 780px) {
+      :root { --section: 88px; }
+
       .site-header {
         grid-template-columns: 1fr auto;
         min-height: 74px;
@@ -720,8 +722,9 @@
       .site-nav { display: none; }
 
       .hero {
-        padding-top: 72px;
-        gap: 72px;
+        padding-top: 64px;
+        padding-bottom: 88px;
+        gap: 60px;
       }
 
       h1 { font-size: clamp(3.35rem, 12vw, 5.4rem); }
@@ -729,7 +732,7 @@
 
       .hero-facts div {
         min-height: auto;
-        padding: 18px 0;
+        padding: 16px 0;
       }
 
       .hero-facts div + div {
@@ -759,7 +762,7 @@
 
       .section-intro-grid {
         grid-template-columns: 1fr;
-        gap: 34px;
+        gap: 28px;
       }
 
       .section-index { position: static; }
@@ -772,7 +775,7 @@
 
       .sequence li {
         min-height: 0;
-        padding: 34px 0;
+        padding: 30px 0;
         grid-template-columns: 48px 1fr;
         gap: 8px 20px;
       }
@@ -787,12 +790,14 @@
       }
 
       .past-copy { order: -1; }
-      .past-grid { gap: 72px; }
+      .past-grid { gap: 60px; }
       .setup-proof { width: min(100%, 470px); justify-self: center; }
       .setup-crop { height: 700px; }
 
-      .privacy-grid,
-      .release-grid { gap: 66px; }
+      .privacy-grid { gap: 52px; }
+      .release-grid { gap: 40px; }
+
+      .release { padding-block: 88px; }
 
       .privacy-ledger { width: min(100%, 620px); }
       .privacy-orbit { width: 650px; right: -60%; bottom: -28%; }
@@ -800,7 +805,7 @@
       .release-mark { max-width: 320px; }
 
       .site-footer {
-        padding-block: 26px;
+        padding-block: 24px;
         grid-template-columns: 1fr;
         gap: 9px;
       }
@@ -813,15 +818,16 @@
     @media (max-width: 480px) {
       :root {
         --gutter: 18px;
-        --section: 92px;
+        --section: 80px;
       }
 
       .brand img { width: 34px; height: 34px; }
       .header-release span { letter-spacing: .12em; }
 
       .hero {
-        padding-top: 60px;
-        padding-bottom: 104px;
+        padding-top: 56px;
+        padding-bottom: 80px;
+        gap: 52px;
       }
 
       h1 {
@@ -860,7 +866,7 @@
         font-size: 16px;
       }
 
-      .sequence { margin-top: 54px; }
+      .sequence { margin-top: 48px; }
       .sequence h3 { font-size: 23px; }
 
       .evidence-list li {
@@ -874,6 +880,11 @@
 
       .setup-proof::before { left: 12px; }
       .setup-crop { height: 610px; border-radius: 24px 24px 0 0; }
+
+      .past-grid { gap: 48px; }
+      .privacy-grid { gap: 44px; }
+      .release-grid { gap: 32px; }
+      .release { padding-block: 80px; }
 
       .privacy-ledger div {
         min-height: 80px;
