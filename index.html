@@ -4,26 +4,26 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0b0d10">
-  <meta name="description" content="Anewly helps you choose one compassionate next step, guided by what has actually helped you before. Coming soon for iPhone.">
+  <meta name="description" content="Anewly is an iPhone app for days when getting started is hard. Check in, cover the essentials, and see one activity based on what has helped before.">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Anewly">
-  <meta property="og:title" content="Anewly — A calmer next step">
-  <meta property="og:description" content="For when you don't know what to do next. Coming soon for iPhone.">
+  <meta property="og:title" content="Anewly — One thing to do next">
+  <meta property="og:description" content="Anewly is an iPhone app for days when getting started is hard. Check in, cover the essentials, and see one activity based on what has helped before.">
   <meta property="og:url" content="https://anewly.app/">
   <meta property="og:image" content="https://anewly.app/assets/og-v2.png">
   <meta property="og:image:width" content="1734">
   <meta property="og:image:height" content="907">
   <meta property="og:image:alt" content="Anewly — For when you don't know what to do next. Coming soon for iPhone.">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Anewly — A calmer next step">
-  <meta name="twitter:description" content="For when you don't know what to do next. Coming soon for iPhone.">
+  <meta name="twitter:title" content="Anewly — One thing to do next">
+  <meta name="twitter:description" content="Anewly is an iPhone app for days when getting started is hard. Check in, cover the essentials, and see one activity based on what has helped before.">
   <meta name="twitter:image" content="https://anewly.app/assets/og-v2.png">
   <meta name="twitter:image:alt" content="Anewly — For when you don't know what to do next. Coming soon for iPhone.">
   <link rel="canonical" href="https://anewly.app/">
   <link rel="icon" type="image/png" href="assets/app-icon.png">
   <link rel="apple-touch-icon" href="assets/app-icon.png">
   <link rel="manifest" href="site.webmanifest">
-  <title>Anewly — A calmer next step</title>
+  <title>Anewly — One thing to do next</title>
   <style>
     :root {
       color-scheme: dark;
@@ -402,35 +402,6 @@
       object-fit: contain;
     }
 
-    .proof-note {
-      position: absolute;
-      z-index: 2;
-      right: -34px;
-      bottom: 12%;
-      width: 220px;
-      margin: 0;
-      padding: 20px 20px 18px;
-      border-left: 2px solid var(--ember);
-      background: var(--surface-raised);
-      box-shadow: 0 20px 48px rgba(0, 0, 0, .34);
-    }
-
-    .proof-note p {
-      margin: 0;
-      font: italic 500 17px/1.45 var(--serif);
-    }
-
-    .proof-note cite {
-      display: block;
-      margin-top: 10px;
-      color: var(--text-3);
-      font-size: 9px;
-      font-style: normal;
-      font-weight: 800;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-    }
-
     .method {
       padding-block: var(--section);
       border-top: 1px solid var(--rule);
@@ -462,6 +433,7 @@
     }
 
     .section-intro-copy h2,
+    .past-copy h2,
     .privacy-copy h2,
     .release-copy h2 {
       max-width: 850px;
@@ -493,7 +465,7 @@
     .sequence li {
       min-height: 170px;
       display: grid;
-      grid-template-columns: 92px minmax(220px, .75fr) minmax(260px, 1fr) 150px;
+      grid-template-columns: 92px minmax(220px, .75fr) minmax(260px, 1fr);
       align-items: center;
       gap: clamp(24px, 4vw, 64px);
       border-bottom: 1px solid var(--rule);
@@ -517,17 +489,6 @@
       color: var(--text-2);
       font-size: 15px;
       line-height: 1.6;
-    }
-
-    .sequence-outcome {
-      justify-self: end;
-      color: var(--text-3);
-      font-size: 10px;
-      line-height: 1.4;
-      font-weight: 800;
-      letter-spacing: .13em;
-      text-align: right;
-      text-transform: uppercase;
     }
 
     .past-you {
@@ -576,38 +537,6 @@
     }
 
     .past-copy .section-label { margin-bottom: 30px; }
-
-    .past-quote {
-      max-width: 780px;
-      margin: 0;
-    }
-
-    .past-quote p {
-      margin: 0;
-      font: italic 500 clamp(2.8rem, 5.2vw, 5.5rem)/1.05 var(--serif);
-      letter-spacing: -.045em;
-      text-wrap: balance;
-    }
-
-    .past-quote cite {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-top: 28px;
-      color: var(--ember);
-      font-size: 10px;
-      font-style: normal;
-      font-weight: 820;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-    }
-
-    .past-quote cite::before {
-      content: "";
-      width: 34px;
-      height: 1px;
-      background: currentColor;
-    }
 
     .past-explainer {
       max-width: 650px;
@@ -713,13 +642,7 @@
     }
 
     .release-mark {
-      display: grid;
-      grid-template-columns: 92px 1fr;
-      align-items: center;
-      gap: 22px;
-      color: var(--text-3);
-      font-size: 12px;
-      line-height: 1.5;
+      display: block;
     }
 
     .release-mark img {
@@ -740,18 +663,13 @@
       border-color: rgba(228, 161, 99, .4);
     }
 
-    .contact-link {
-      min-height: 48px;
-      display: inline-flex;
-      align-items: center;
-      color: var(--text-2);
-      font-size: 14px;
-      font-weight: 650;
+    .release-copy > p a {
+      color: var(--text);
       text-underline-offset: 5px;
       text-decoration-color: rgba(228, 161, 99, .45);
     }
 
-    .contact-link:hover { color: var(--text); }
+    .release-copy > p a:hover { text-decoration-color: var(--ember); }
 
     .site-footer {
       min-height: 86px;
@@ -781,13 +699,9 @@
       .hero-copy { max-width: 820px; }
       .hero-visual { width: min(78vw, 520px); }
       .signature-ring { left: -80px; }
-      .proof-note { right: -60px; }
-
       .sequence li {
         grid-template-columns: 72px minmax(200px, .7fr) minmax(240px, 1fr);
       }
-
-      .sequence-outcome { display: none; }
 
       .past-grid {
         grid-template-columns: minmax(300px, .72fr) minmax(0, 1fr);
@@ -841,11 +755,6 @@
         width: 22px;
         height: 40px;
         right: -18px;
-      }
-
-      .proof-note {
-        right: -8px;
-        bottom: 9%;
       }
 
       .section-intro-grid {
@@ -937,16 +846,8 @@
       .product-proof { border-radius: 25px; }
       .screen-frame { padding-inline: 8px; }
 
-      .proof-note {
-        width: 184px;
-        right: -8px;
-        bottom: 8%;
-        padding: 16px;
-      }
-
-      .proof-note p { font-size: 15px; }
-
       .section-intro-copy h2,
+      .past-copy h2,
       .privacy-copy h2,
       .release-copy h2 {
         font-size: clamp(2.6rem, 12vw, 3.5rem);
@@ -962,10 +863,6 @@
       .sequence { margin-top: 54px; }
       .sequence h3 { font-size: 23px; }
 
-      .past-quote p {
-        font-size: clamp(2.55rem, 12vw, 3.35rem);
-      }
-
       .evidence-list li {
         grid-template-columns: 1fr;
         gap: 7px;
@@ -980,10 +877,6 @@
 
       .privacy-ledger div {
         min-height: 80px;
-      }
-
-      .release-mark {
-        grid-template-columns: 72px 1fr;
       }
 
       .release-mark img {
@@ -1023,7 +916,7 @@
     </nav>
 
     <div class="header-release" aria-label="Anewly for iPhone is coming soon">
-      <span>iPhone release</span>
+      <span>Anewly for iPhone</span>
       <strong>Coming soon</strong>
     </div>
   </header>
@@ -1031,9 +924,9 @@
   <main id="main">
     <section class="hero shell" id="top">
       <div class="hero-copy">
-        <p class="section-label">For hard-to-start days</p>
-        <h1>When the day feels stuck, choose one thing.</h1>
-        <p class="hero-intro">Anewly checks your essentials first, then suggests one reasonable activity—shaped by what has actually helped you before.</p>
+        <p class="section-label">For days when getting started is hard</p>
+        <h1>Find one thing to do next.</h1>
+        <p class="hero-intro">Check in with your mood and energy. Anewly makes sure the basics are covered, then suggests one activity based on what has helped on similar days.</p>
 
         <div class="hero-action">
           <div class="release-status" role="status" aria-label="Anewly iPhone download coming soon">
@@ -1043,7 +936,7 @@
               <strong>Coming soon</strong>
             </span>
           </div>
-          <a class="story-link" href="#how-it-works">See the idea</a>
+          <a class="story-link" href="#how-it-works">See how it works</a>
         </div>
 
       </div>
@@ -1052,30 +945,26 @@
         <span class="signature-ring" aria-hidden="true"></span>
         <figure class="product-proof">
           <figcaption class="proof-header">
-            <span>Today · Actual app</span>
-            <span>On device</span>
+            <span>Today · In the app</span>
+            <span>Stored on your iPhone</span>
           </figcaption>
           <div class="screen-frame">
-            <img src="assets/today.png" alt="Anewly Today screen with a gentle check-in, optional goals, tasks, and a note from Past You" width="1206" height="2622" fetchpriority="high">
+            <img src="assets/today.png" alt="Anewly Today screen showing a check-in, optional goals, tasks, and a note from Past You" width="1206" height="2622" fetchpriority="high">
           </div>
         </figure>
-        <blockquote class="proof-note">
-          <p>“Today counts. Nothing else needed.”</p>
-          <cite>From the app</cite>
-        </blockquote>
       </div>
 
       <dl class="hero-facts" aria-label="Anewly principles">
         <div>
-          <dt>One next step</dt>
-          <dd>Not another overwhelming list.</dd>
+          <dt>One suggestion</dt>
+          <dd>See one activity at a time.</dd>
         </div>
         <div>
-          <dt>Your own evidence</dt>
-          <dd>Past notes help guide what fits.</dd>
+          <dt>Based on your history</dt>
+          <dd>Past check-ins help shape future suggestions.</dd>
         </div>
         <div>
-          <dt>Private by default</dt>
+          <dt>Stored on your iPhone</dt>
           <dd>No account or server sync.</dd>
         </div>
       </dl>
@@ -1084,32 +973,28 @@
     <section class="method" id="how-it-works" aria-labelledby="method-title">
       <div class="shell">
         <div class="section-intro-grid">
-          <p class="section-index"><strong>01</strong> The check-in</p>
+          <p class="section-index"><strong>01</strong> How it works</p>
           <div class="section-intro-copy">
-            <p class="section-label">Start with what is true</p>
-            <h2 id="method-title">Less motivation. More useful context.</h2>
-            <p>Anewly does not ask you to become a different person before you can begin. It notices where your energy is, checks what cannot wait, and narrows the day from there.</p>
+            <h2 id="method-title">A quick check-in, then one suggestion.</h2>
+            <p>Tell Anewly how you’re feeling and how much energy you have. It checks the essentials you set up and suggests one activity.</p>
           </div>
         </div>
 
         <ol class="sequence">
           <li>
             <span class="sequence-number">01</span>
-            <h3>Check in honestly.</h3>
-            <p>Notice your mood and energy without needing to explain, improve, or perform them.</p>
-            <span class="sequence-outcome">Begin where you are</span>
+            <h3>Check in</h3>
+            <p>Choose your mood and energy level. Adding a note is optional.</p>
           </li>
           <li>
             <span class="sequence-number">02</span>
-            <h3>Protect the essentials.</h3>
-            <p>Medication, food, pets, school, work—what matters gets checked before anything extra is offered.</p>
-            <span class="sequence-outcome">Reality comes first</span>
+            <h3>Cover the basics</h3>
+            <p>Anything you marked as essential comes first, whether that’s medication, food, pets, school, or work.</p>
           </li>
           <li>
             <span class="sequence-number">03</span>
-            <h3>Choose one thing.</h3>
-            <p>Get one suggestion shaped by your energy, your context, and activities that helped on similar days.</p>
-            <span class="sequence-outcome">One, not a list</span>
+            <h3>See one activity</h3>
+            <p>Anewly uses today’s check-in and similar past check-ins to make a suggestion.</p>
           </li>
         </ol>
       </div>
@@ -1119,22 +1004,19 @@
       <div class="past-grid shell">
         <figure class="setup-proof">
           <div class="setup-crop">
-            <img src="assets/onboarding.png" alt="Anewly setup screen explaining essentials, activities, and how personal notes become evidence" width="1206" height="2622" loading="lazy" decoding="async">
+            <img src="assets/onboarding.png" alt="Anewly setup screen explaining essentials, activities, and saved check-ins" width="1206" height="2622" loading="lazy" decoding="async">
           </div>
         </figure>
 
         <div class="past-copy">
           <p class="section-label">Past You</p>
-          <blockquote class="past-quote">
-            <p id="past-title">“Your own notes become evidence.”</p>
-            <cite>Anewly onboarding</cite>
-          </blockquote>
-          <p class="past-explainer">Generic advice cannot know what a walk, a shower, ten quiet minutes, or calling one specific person has meant in your life. Anewly can learn from the moments you choose to keep.</p>
+          <h2 id="past-title">Keep a note for next time.</h2>
+          <p class="past-explainer">When something helps, save a note, photo, or voice memo with your check-in. On a similar day, Anewly can use it to make a better suggestion.</p>
 
           <ul class="evidence-list">
-            <li><strong>Remember</strong><span>Save a short note, voice thought, or photos with a check-in.</span></li>
-            <li><strong>Notice</strong><span>Revisit mood, energy, and what helped without turning your life into a score.</span></li>
-            <li><strong>Choose</strong><span>Let those real moments make the next suggestion more relevant.</span></li>
+            <li><strong>Save it</strong><span>Add a note, photo, or recording to a check-in.</span></li>
+            <li><strong>Look back</strong><span>Revisit how you felt and what you tried.</span></li>
+            <li><strong>Use it later</strong><span>Past check-ins can inform future suggestions.</span></li>
           </ul>
         </div>
       </div>
@@ -1144,16 +1026,16 @@
       <span class="privacy-orbit" aria-hidden="true"></span>
       <div class="privacy-grid shell">
         <div class="privacy-copy">
-          <p class="section-label">Private by design</p>
-          <h2 id="privacy-title">No account. No feed. No audience.</h2>
-          <p>Your check-ins, notes, photos, and recordings stay on your iPhone. Anewly is local-first and does not need a server—or anyone watching—to be useful.</p>
+          <p class="section-label">Privacy</p>
+          <h2 id="privacy-title">Your data stays on your iPhone.</h2>
+          <p>Your check-ins, notes, photos, and recordings stay on your device. No account is required, and nothing is synced to an Anewly server. You can export a complete archive at any time.</p>
         </div>
 
         <dl class="privacy-ledger" aria-label="Privacy details">
-          <div><dt>Personal data</dt><dd>On device</dd></div>
-          <div><dt>Anewly account</dt><dd>Not required</dd></div>
+          <div><dt>Storage</dt><dd>On device</dd></div>
+          <div><dt>Account</dt><dd>Not required</dd></div>
           <div><dt>Server sync</dt><dd>None</dd></div>
-          <div><dt>Complete archive export</dt><dd>Included</dd></div>
+          <div><dt>Full archive export</dt><dd>Included</dd></div>
         </dl>
       </div>
     </section>
@@ -1162,13 +1044,12 @@
       <div class="release-grid shell">
         <div class="release-mark">
           <img src="assets/app-icon.png" alt="Anewly app icon" width="92" height="92" loading="lazy" decoding="async">
-          <span>The open ring leaves room for the next step.</span>
         </div>
 
         <div class="release-copy">
           <p class="section-label">Anewly for iPhone</p>
-          <h2 id="release-title">A little help finding what comes next.</h2>
-          <p>Built for the days when starting is the hardest part. Anewly is coming soon to the App Store.</p>
+          <h2 id="release-title">Coming soon to the App Store.</h2>
+          <p>Questions about the app? Email <a href="mailto:hello@anewly.app">hello@anewly.app</a>.</p>
           <div class="release-actions">
             <div class="release-status" role="status" aria-label="Anewly iPhone download coming soon">
               <img class="release-status__icon" src="assets/app-icon.png" alt="" width="40" height="40" loading="lazy">
@@ -1177,7 +1058,6 @@
                 <strong>Coming soon</strong>
               </span>
             </div>
-            <a class="contact-link" href="mailto:hello@anewly.app">Questions? hello@anewly.app</a>
           </div>
         </div>
       </div>
