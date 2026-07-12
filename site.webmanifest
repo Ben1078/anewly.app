@@ -1,0 +1,17 @@
+{
+  "name": "Anewly",
+  "short_name": "Anewly",
+  "description": "A calmer next step. Coming soon for iPhone.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b0d10",
+  "theme_color": "#0b0d10",
+  "icons": [
+    {
+      "src": "/assets/app-icon.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

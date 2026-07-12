@@ -3,26 +3,853 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Anewly — Coming Soon</title>
+  <meta name="theme-color" content="#0b0d10">
+  <meta name="description" content="Anewly helps you choose one compassionate next step, guided by what has actually helped you before. Coming soon for iPhone.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Anewly">
+  <meta property="og:title" content="Anewly — A calmer next step">
+  <meta property="og:description" content="For when you don't know what to do next. Coming soon for iPhone.">
+  <meta property="og:url" content="https://anewly.app/">
+  <meta property="og:image" content="https://anewly.app/assets/og.png">
+  <meta property="og:image:width" content="1731">
+  <meta property="og:image:height" content="909">
+  <meta property="og:image:alt" content="Anewly — For when you don't know what to do next. Coming soon for iPhone.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Anewly — A calmer next step">
+  <meta name="twitter:description" content="For when you don't know what to do next. Coming soon for iPhone.">
+  <meta name="twitter:image" content="https://anewly.app/assets/og.png">
+  <meta name="twitter:image:alt" content="Anewly — For when you don't know what to do next. Coming soon for iPhone.">
+  <link rel="canonical" href="https://anewly.app/">
+  <link rel="icon" type="image/png" href="assets/app-icon.png">
+  <link rel="apple-touch-icon" href="assets/app-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <title>Anewly — A calmer next step</title>
+  <script>document.documentElement.classList.add('js');</script>
   <style>
-    :root { color-scheme: light; }
+    :root {
+      color-scheme: dark;
+      --bg: #0b0d10;
+      --shell: #11151a;
+      --card: #171c23;
+      --card-strong: #1f262e;
+      --text: #edeae3;
+      --muted: #a7acb2;
+      --quiet: #8b9199;
+      --ember: #e4a163;
+      --ember-bright: #ffb35f;
+      --ember-deep: #b87940;
+      --sage: #93b899;
+      --line: rgba(235, 230, 220, .10);
+      --line-strong: rgba(235, 230, 220, .17);
+      --shadow: 0 32px 90px rgba(0, 0, 0, .45);
+      --max: 1180px;
+    }
+
     * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--bg);
+    }
+
     body {
       margin: 0;
-      min-height: 100vh;
+      min-width: 320px;
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at 78% -5%, rgba(228, 161, 99, .13), transparent 30rem),
+        radial-gradient(circle at 18% 39%, rgba(147, 184, 153, .055), transparent 26rem),
+        var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a { color: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    img { display: block; max-width: 100%; }
+
+    .skip-link {
+      position: fixed;
+      z-index: 100;
+      top: 10px;
+      left: 10px;
+      padding: 10px 14px;
+      border-radius: 10px;
+      background: var(--text);
+      color: var(--bg);
+      transform: translateY(-150%);
+      transition: transform .2s ease;
+    }
+
+    .skip-link:focus { transform: translateY(0); }
+
+    .site-header {
+      position: relative;
+      z-index: 20;
+      width: min(calc(100% - 40px), var(--max));
+      margin: 0 auto;
+      padding: 22px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 760;
+      letter-spacing: -.02em;
+    }
+
+    .brand img {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      box-shadow: 0 0 0 1px var(--line);
+    }
+
+    .header-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(23, 28, 35, .72);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      backdrop-filter: blur(18px);
+    }
+
+    .header-status::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--ember);
+      box-shadow: 0 0 0 5px rgba(228, 161, 99, .09);
+    }
+
+    main { isolation: isolate; }
+
+    .hero {
+      position: relative;
+      width: min(calc(100% - 40px), var(--max));
+      min-height: 760px;
+      margin: 0 auto;
+      padding: 88px 0 112px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.03fr) minmax(390px, .82fr);
+      align-items: center;
+      gap: clamp(54px, 8vw, 112px);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      right: -25%;
+      top: 3%;
+      width: 720px;
+      height: 720px;
+      border-radius: 50%;
+      border: 1px solid rgba(228, 161, 99, .08);
+      box-shadow:
+        0 0 0 80px rgba(228, 161, 99, .018),
+        0 0 0 160px rgba(228, 161, 99, .01);
+      pointer-events: none;
+    }
+
+    .eyebrow,
+    .micro-label {
+      margin: 0 0 18px;
+      color: var(--ember);
+      font-size: 12px;
+      line-height: 1.3;
+      font-weight: 800;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 740px;
+      margin: 0;
+      font-size: clamp(3.4rem, 7.25vw, 6.9rem);
+      line-height: .96;
+      letter-spacing: -.065em;
+      font-weight: 780;
+      text-wrap: balance;
+    }
+
+    .hero-copy {
+      max-width: 610px;
+      margin: 30px 0 0;
+      color: var(--muted);
+      font-size: clamp(1.1rem, 2vw, 1.34rem);
+      line-height: 1.58;
+      letter-spacing: -.012em;
+      text-wrap: pretty;
+    }
+
+    .hero-actions {
+      margin-top: 38px;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .store-button {
+      min-width: 230px;
+      min-height: 66px;
+      padding: 12px 21px;
+      display: inline-flex;
+      align-items: center;
+      gap: 13px;
+      border: 1px solid rgba(228, 161, 99, .45);
+      border-radius: 17px;
+      background: linear-gradient(145deg, var(--ember-bright), var(--ember));
+      color: #1c1206;
+      box-shadow: 0 14px 38px rgba(228, 161, 99, .18);
+      cursor: default;
+      font: inherit;
+      user-select: none;
+    }
+
+    .store-button__mark {
+      width: 30px;
+      height: 30px;
       display: grid;
       place-items: center;
-      background: #f7f4ef;
-      color: #1f2a24;
-      font-family: ui-serif, Georgia, Cambria, "Times New Roman", serif;
+      border: 1.5px solid rgba(28, 18, 6, .45);
+      border-radius: 9px;
+      font-size: 16px;
+      font-weight: 850;
     }
-    main { padding: 2rem; text-align: center; }
-    h1 { margin: 0; font-size: clamp(2.4rem, 8vw, 5rem); font-weight: 500; letter-spacing: -0.04em; }
+
+    .store-button__text { display: grid; gap: 2px; text-align: left; }
+    .store-button__text small { font-size: 10px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .store-button__text strong { font-size: 18px; letter-spacing: -.02em; }
+
+    .text-link {
+      min-height: 48px;
+      padding: 0 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .text-link::after { content: "↓"; color: var(--ember); transition: transform .2s ease; }
+    .text-link:hover::after { transform: translateY(3px); }
+
+    .privacy-note {
+      margin: 24px 0 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--quiet);
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .privacy-note::before {
+      content: "";
+      flex: 0 0 auto;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--sage);
+    }
+
+    .phone-stage {
+      position: relative;
+      display: grid;
+      place-items: center;
+      min-height: 640px;
+    }
+
+    .phone-stage::before,
+    .phone-stage::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(2px);
+      pointer-events: none;
+    }
+
+    .phone-stage::before {
+      width: 310px;
+      height: 310px;
+      background: rgba(228, 161, 99, .16);
+      box-shadow: 0 0 100px 55px rgba(228, 161, 99, .11);
+    }
+
+    .phone-stage::after {
+      width: 120px;
+      height: 120px;
+      right: -24px;
+      top: 19%;
+      border: 1px solid rgba(147, 184, 153, .24);
+      box-shadow: 0 0 0 28px rgba(147, 184, 153, .025);
+    }
+
+    .phone {
+      position: relative;
+      z-index: 2;
+      width: min(100%, 378px);
+      margin: 0;
+      padding: 9px;
+      overflow: hidden;
+      border: 1px solid rgba(235, 230, 220, .22);
+      border-radius: 54px;
+      background: #050607;
+      box-shadow: var(--shadow), 0 0 0 9px rgba(255, 255, 255, .015);
+      transform: rotate(2.2deg);
+      transform-origin: 50% 70%;
+    }
+
+    .phone img {
+      width: 100%;
+      border-radius: 45px;
+      background: var(--shell);
+    }
+
+    .phone-caption {
+      position: absolute;
+      z-index: 4;
+      left: -18px;
+      bottom: 15%;
+      width: 190px;
+      padding: 15px 17px;
+      border: 1px solid var(--line-strong);
+      border-radius: 16px;
+      background: rgba(17, 21, 26, .9);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, .32);
+      backdrop-filter: blur(16px);
+    }
+
+    .phone-caption strong { display: block; font-size: 14px; }
+    .phone-caption span { display: block; margin-top: 4px; color: var(--muted); font-size: 12px; line-height: 1.4; }
+
+    .trust-bar {
+      width: min(calc(100% - 40px), var(--max));
+      margin: 0 auto 40px;
+      padding: 25px 30px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: var(--line);
+      overflow: hidden;
+    }
+
+    .trust-item {
+      min-height: 82px;
+      padding: 6px clamp(18px, 4vw, 36px);
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      background: var(--shell);
+    }
+
+    .trust-number {
+      color: var(--ember);
+      font: italic 600 25px/1 Georgia, serif;
+    }
+
+    .trust-item strong { display: block; font-size: 14px; }
+    .trust-item span { display: block; margin-top: 4px; color: var(--quiet); font-size: 12px; line-height: 1.4; }
+
+    .section {
+      width: min(calc(100% - 40px), var(--max));
+      margin: 0 auto;
+      padding: 130px 0;
+    }
+
+    .section-heading {
+      max-width: 770px;
+      margin-bottom: 62px;
+    }
+
+    .section h2 {
+      margin: 0;
+      font-size: clamp(2.45rem, 5.7vw, 5.25rem);
+      line-height: 1.02;
+      letter-spacing: -.055em;
+      text-wrap: balance;
+    }
+
+    .section-intro {
+      max-width: 640px;
+      margin: 24px 0 0;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.65;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .step-card {
+      position: relative;
+      min-height: 330px;
+      padding: 32px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: linear-gradient(155deg, rgba(31, 38, 46, .72), var(--card));
+    }
+
+    .step-card::after {
+      content: attr(data-step);
+      position: absolute;
+      right: 22px;
+      top: 11px;
+      color: rgba(235, 230, 220, .04);
+      font-size: 108px;
+      line-height: 1;
+      font-weight: 850;
+      letter-spacing: -.08em;
+    }
+
+    .step-icon {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line-strong);
+      border-radius: 15px;
+      background: var(--card-strong);
+      color: var(--ember);
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    .step-card h3 {
+      position: relative;
+      z-index: 1;
+      margin: 74px 0 0;
+      font-size: 24px;
+      letter-spacing: -.035em;
+    }
+
+    .step-card p {
+      position: relative;
+      z-index: 1;
+      margin: 13px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    .evidence {
+      position: relative;
+      padding-top: 160px;
+      display: grid;
+      grid-template-columns: minmax(320px, .82fr) minmax(0, 1.1fr);
+      align-items: center;
+      gap: clamp(64px, 10vw, 140px);
+    }
+
+    .evidence-visual {
+      position: relative;
+      min-height: 670px;
+      display: grid;
+      place-items: center;
+    }
+
+    .evidence-visual .phone {
+      width: min(100%, 342px);
+      transform: rotate(-2.6deg);
+    }
+
+    .evidence-quote {
+      position: absolute;
+      z-index: 3;
+      right: -26px;
+      bottom: 18%;
+      width: min(300px, 72%);
+      padding: 24px;
+      border: 1px solid rgba(228, 161, 99, .26);
+      border-radius: 20px;
+      background: rgba(23, 28, 35, .93);
+      box-shadow: var(--shadow);
+    }
+
+    .evidence-quote p {
+      margin: 0;
+      font: italic 500 19px/1.52 Georgia, "Times New Roman", serif;
+      color: var(--text);
+    }
+
+    .evidence-quote span {
+      display: block;
+      margin-top: 12px;
+      color: var(--ember);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .feature-list {
+      margin: 42px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 18px;
+    }
+
+    .feature-list li {
+      padding: 18px 0 18px 48px;
+      position: relative;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .feature-list li::before {
+      content: "";
+      position: absolute;
+      left: 2px;
+      top: 22px;
+      width: 22px;
+      height: 22px;
+      border: 1px solid rgba(147, 184, 153, .38);
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--sage) 0 3px, transparent 4px);
+    }
+
+    .feature-list strong { color: var(--text); }
+
+    .privacy-section {
+      position: relative;
+      width: min(calc(100% - 40px), var(--max));
+      margin: 40px auto 0;
+      padding: clamp(52px, 9vw, 100px);
+      overflow: hidden;
+      border: 1px solid var(--line-strong);
+      border-radius: 32px;
+      background:
+        radial-gradient(circle at 88% 25%, rgba(147, 184, 153, .11), transparent 24rem),
+        linear-gradient(145deg, #151a20, #101419);
+    }
+
+    .privacy-section::after {
+      content: "";
+      position: absolute;
+      right: clamp(-170px, -8vw, -70px);
+      bottom: -245px;
+      width: 500px;
+      height: 500px;
+      border: 44px solid rgba(237, 234, 227, .055);
+      border-radius: 50%;
+      box-shadow: inset 0 0 0 1px rgba(228, 161, 99, .16);
+    }
+
+    .privacy-content { position: relative; z-index: 1; max-width: 720px; }
+    .privacy-section h2 { font-size: clamp(2.3rem, 5vw, 4.6rem); }
+    .privacy-section p { max-width: 610px; margin: 24px 0 0; color: var(--muted); font-size: 18px; line-height: 1.65; }
+
+    .privacy-points {
+      margin-top: 40px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .privacy-points span {
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(11, 13, 16, .45);
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    .closing {
+      text-align: center;
+      padding-top: 160px;
+      padding-bottom: 160px;
+    }
+
+    .closing-mark {
+      width: 86px;
+      height: 86px;
+      margin: 0 auto 30px;
+      border-radius: 23px;
+      box-shadow: 0 18px 60px rgba(0, 0, 0, .4);
+    }
+
+    .closing h2 { max-width: 900px; margin: 0 auto; }
+    .closing p { max-width: 540px; margin: 25px auto 0; color: var(--muted); font-size: 18px; line-height: 1.65; }
+    .closing .store-button { margin: 38px auto 0; }
+
+    .contact-link {
+      display: inline-block;
+      margin-top: 24px;
+      color: var(--quiet);
+      font-size: 14px;
+      text-underline-offset: 4px;
+      text-decoration-color: rgba(228, 161, 99, .45);
+    }
+
+    .contact-link:hover { color: var(--text); }
+
+    .site-footer {
+      width: min(calc(100% - 40px), var(--max));
+      margin: 0 auto;
+      padding: 26px 0 36px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      border-top: 1px solid var(--line);
+      color: var(--quiet);
+      font-size: 12px;
+    }
+
+    .js .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .65s ease, transform .65s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    .js .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+    :focus-visible {
+      outline: 2px solid var(--ember-bright);
+      outline-offset: 4px;
+      border-radius: 8px;
+    }
+
+    @media (max-width: 920px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 70px;
+        text-align: center;
+      }
+
+      .hero-copy { margin-left: auto; margin-right: auto; }
+      .hero-actions { justify-content: center; }
+      .privacy-note { justify-content: center; }
+      .phone-stage { min-height: 680px; }
+      .phone-caption { left: 8%; }
+      .hero::before { right: -60%; top: 42%; }
+      .steps { grid-template-columns: 1fr; }
+      .step-card { min-height: 270px; }
+      .step-card h3 { margin-top: 60px; }
+      .evidence { grid-template-columns: 1fr; }
+      .evidence-copy { order: -1; }
+      .evidence-quote { right: 9%; }
+    }
+
+    @media (max-width: 680px) {
+      .site-header { width: min(calc(100% - 28px), var(--max)); padding-top: 16px; }
+      .header-status { padding: 7px 10px; font-size: 10px; }
+      .hero, .section, .privacy-section, .trust-bar, .site-footer { width: min(calc(100% - 28px), var(--max)); }
+      .hero { min-height: auto; padding: 64px 0 80px; gap: 30px; }
+      h1 { font-size: clamp(3.15rem, 15vw, 5rem); }
+      .hero-copy { font-size: 17px; }
+      .phone-stage { min-height: 580px; }
+      .phone { width: min(100%, 310px); border-radius: 46px; }
+      .phone img { border-radius: 38px; }
+      .phone-caption { left: 0; bottom: 8%; }
+      .trust-bar { grid-template-columns: 1fr; padding: 1px; }
+      .section { padding: 98px 0; }
+      .section-heading { margin-bottom: 42px; }
+      .section h2 { font-size: clamp(2.6rem, 12vw, 4rem); }
+      .section-intro, .privacy-section p, .closing p { font-size: 16px; }
+      .step-card { padding: 26px; }
+      .evidence { padding-top: 110px; gap: 30px; }
+      .evidence-visual { min-height: 600px; }
+      .evidence-quote { right: 0; bottom: 11%; width: 76%; }
+      .privacy-section { border-radius: 25px; }
+      .privacy-section::after { opacity: .65; }
+      .closing { padding-top: 115px; padding-bottom: 115px; }
+      .site-footer { flex-direction: column; align-items: center; text-align: center; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+      .js .reveal { opacity: 1; transform: none; }
+      .phone { transform: none; }
+    }
   </style>
 </head>
 <body>
-  <main>
-    <h1>Anewly — Coming Soon.</h1>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" aria-label="Site header">
+    <a class="brand" href="#top" aria-label="Anewly home">
+      <img src="assets/app-icon.png" alt="" width="36" height="36">
+      <span>Anewly</span>
+    </a>
+    <div class="header-status">iPhone · Coming soon</div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-content reveal">
+        <p class="eyebrow">A calmer next step</p>
+        <h1>For when you don’t know what to do next.</h1>
+        <p class="hero-copy">Anewly checks your essentials first, then suggests one thing—using what has actually helped you before.</p>
+        <div class="hero-actions">
+          <button class="store-button" type="button" disabled aria-label="Anewly for iPhone, coming soon to the App Store">
+            <span class="store-button__mark" aria-hidden="true">A</span>
+            <span class="store-button__text">
+              <small>Coming soon to the</small>
+              <strong>App Store</strong>
+            </span>
+          </button>
+          <a class="text-link" href="#how-it-works">See how it works</a>
+        </div>
+        <p class="privacy-note">Private by design. Everything stays on your phone.</p>
+      </div>
+
+      <div class="phone-stage reveal" aria-label="Preview of the Anewly Today screen">
+        <figure class="phone">
+          <img src="assets/today.png" alt="Anewly Today screen showing a gentle check-in, tasks, goals, and a note from Past You" width="1206" height="2622">
+        </figure>
+        <div class="phone-caption" aria-hidden="true">
+          <strong>Today counts.</strong>
+          <span>Nothing else needed.</span>
+        </div>
+      </div>
+    </section>
+
+    <aside class="trust-bar reveal" aria-label="Anewly principles">
+      <div class="trust-item">
+        <span class="trust-number">01</span>
+        <span><strong>No account</strong><span>No login or cloud profile required.</span></span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-number">02</span>
+        <span><strong>No pressure</strong><span>No shame, countdowns, or loss states.</span></span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-number">03</span>
+        <span><strong>Your evidence</strong><span>Your own notes guide what comes next.</span></span>
+      </div>
+    </aside>
+
+    <section class="section" id="how-it-works">
+      <div class="section-heading reveal">
+        <p class="micro-label">How it works</p>
+        <h2>Start where you are. Choose only what feels possible.</h2>
+        <p class="section-intro">Anewly turns an overwhelming day into one small, compassionate decision at a time.</p>
+      </div>
+
+      <div class="steps">
+        <article class="step-card reveal" data-step="1">
+          <div class="step-icon" aria-hidden="true">●</div>
+          <h3>Check in honestly</h3>
+          <p>Notice your mood and energy without needing to explain or improve them.</p>
+        </article>
+        <article class="step-card reveal" data-step="2">
+          <div class="step-icon" aria-hidden="true">✓</div>
+          <h3>Essentials come first</h3>
+          <p>Medication, food, pets, school, work—Anewly checks what matters before offering anything extra.</p>
+        </article>
+        <article class="step-card reveal" data-step="3">
+          <div class="step-icon" aria-hidden="true">→</div>
+          <h3>One thing, not a list</h3>
+          <p>Get one suggestion shaped by your energy, your context, and what has actually helped before.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section evidence" aria-labelledby="past-you-title">
+      <div class="evidence-visual reveal">
+        <figure class="phone">
+          <img src="assets/onboarding.png" alt="Anewly onboarding screen explaining the calm, private check-in process" width="1206" height="2622" loading="lazy">
+        </figure>
+        <blockquote class="evidence-quote">
+          <p>“Your own notes become evidence.”</p>
+          <span>From Past You</span>
+        </blockquote>
+      </div>
+
+      <div class="evidence-copy reveal">
+        <p class="micro-label">Past You</p>
+        <h2 id="past-you-title">Let your own experience lead.</h2>
+        <p class="section-intro">Anewly remembers what you choose to save—so future suggestions can be grounded in your life, not generic advice.</p>
+        <ul class="feature-list">
+          <li><strong>See patterns without judgment.</strong> Revisit mood, energy, and the things that helped over time.</li>
+          <li><strong>Keep the whole moment.</strong> Save a short note, a voice thought, or photos when they matter.</li>
+          <li><strong>Fresh starts still count.</strong> Progress is evidence of showing up, never a score to defend.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="privacy-section reveal" aria-labelledby="privacy-title">
+      <div class="privacy-content">
+        <p class="micro-label">Private by default</p>
+        <h2 id="privacy-title">Your life stays yours.</h2>
+        <p>Anewly is local-first. There is no Anewly account, no server sync, and no feed watching what you do. Your check-ins, notes, photos, and recordings stay on your iPhone unless you choose to export them.</p>
+        <div class="privacy-points" aria-label="Privacy features">
+          <span>On-device data</span>
+          <span>No account</span>
+          <span>No ads</span>
+          <span>Complete export</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section closing reveal" aria-labelledby="coming-soon-title">
+      <img class="closing-mark" src="assets/app-icon.png" alt="Anewly app icon" width="86" height="86" loading="lazy">
+      <p class="micro-label">Anewly for iPhone</p>
+      <h2 id="coming-soon-title">A little help finding what comes next.</h2>
+      <p>Thoughtfully built for hard-to-start days. Anewly is coming soon to the App Store.</p>
+      <button class="store-button" type="button" disabled aria-label="Anewly for iPhone, coming soon to the App Store">
+        <span class="store-button__mark" aria-hidden="true">A</span>
+        <span class="store-button__text">
+          <small>iPhone download</small>
+          <strong>Coming soon</strong>
+        </span>
+      </button>
+      <a class="contact-link" href="mailto:hello@anewly.app">Questions? hello@anewly.app</a>
+    </section>
   </main>
+
+  <footer class="site-footer">
+    <span>© 2026 Anewly</span>
+    <span>Built gently. Designed for iPhone.</span>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px' });
+      reveals.forEach((element) => observer.observe(element));
+    } else {
+      reveals.forEach((element) => element.classList.add('is-visible'));
+    }
+  </script>
 </body>
 </html>
