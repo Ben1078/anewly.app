@@ -637,13 +637,18 @@
     .release-grid {
       display: grid;
       grid-template-columns: minmax(250px, .55fr) minmax(0, 1.2fr);
-      align-items: end;
+      align-items: start;
       gap: clamp(56px, 11vw, 170px);
     }
 
     .release-mark {
-      display: block;
+      display: flex;
+      align-items: center;
+      gap: 18px;
     }
+
+    .release-mark .section-label { margin: 0; }
+    .release-mark .section-label::before { display: none; }
 
     .release-mark img {
       width: 92px;
@@ -1056,10 +1061,10 @@
       <div class="release-grid shell">
         <div class="release-mark">
           <img src="assets/app-icon.png" alt="Anewly app icon" width="92" height="92" loading="lazy" decoding="async">
+          <p class="section-label">Anewly for iPhone</p>
         </div>
 
         <div class="release-copy">
-          <p class="section-label">Anewly for iPhone</p>
           <h2 id="release-title">Coming soon to the App Store.</h2>
           <p>Questions about the app? Email <a href="mailto:hello@anewly.app">hello@anewly.app</a>.</p>
           <div class="release-actions">
