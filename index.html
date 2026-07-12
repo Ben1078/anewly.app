@@ -435,7 +435,7 @@
     .section-intro-copy h2,
     .past-copy h2,
     .privacy-copy h2,
-    .release-copy h2 {
+    .release-main h2 {
       max-width: 850px;
       margin: 0;
       font-size: clamp(2.8rem, 5vw, 5.3rem);
@@ -447,7 +447,7 @@
 
     .section-intro-copy > p,
     .privacy-copy > p,
-    .release-copy > p {
+    .release-details > p {
       max-width: 660px;
       margin: 28px 0 0;
       color: var(--text-2);
@@ -630,51 +630,53 @@
     }
 
     .release {
-      padding-block: clamp(100px, 13vw, 190px);
+      padding-block: clamp(96px, 11vw, 156px);
       border-top: 1px solid var(--rule);
     }
 
-    .release-grid {
-      display: grid;
-      grid-template-columns: minmax(250px, .55fr) minmax(0, 1.2fr);
-      align-items: start;
-      gap: clamp(56px, 11vw, 170px);
+    .release-shell {
+      border-top: 1px solid var(--rule-strong);
+      border-bottom: 1px solid var(--rule);
     }
 
-    .release-mark {
+    .release-meta {
+      min-height: 64px;
       display: flex;
       align-items: center;
-      gap: 18px;
-    }
-
-    .release-mark .section-label { margin: 0; }
-    .release-mark .section-label::before { display: none; }
-
-    .release-mark img {
-      width: 92px;
-      height: 92px;
-      border-radius: 23px;
-    }
-
-    .release-actions {
-      margin-top: 42px;
-      display: flex;
-      align-items: center;
+      justify-content: space-between;
       gap: 24px;
-      flex-wrap: wrap;
+      border-bottom: 1px solid var(--rule);
+      color: var(--text-3);
+      font-size: 10px;
+      font-weight: 820;
+      letter-spacing: .16em;
+      text-transform: uppercase;
     }
 
-    .release-actions .release-status {
+    .release-meta span:last-child { color: var(--ember); }
+
+    .release-main {
+      padding-block: clamp(48px, 6vw, 84px);
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(280px, .55fr);
+      align-items: end;
+      gap: clamp(48px, 8vw, 120px);
+    }
+
+    .release-details .release-status {
+      margin-top: 32px;
       border-color: rgba(228, 161, 99, .4);
     }
 
-    .release-copy > p a {
+    .release-details > p { margin: 0; }
+
+    .release-details > p a {
       color: var(--text);
       text-underline-offset: 5px;
       text-decoration-color: rgba(228, 161, 99, .45);
     }
 
-    .release-copy > p a:hover { text-decoration-color: var(--ember); }
+    .release-details > p a:hover { text-decoration-color: var(--ember); }
 
     .site-footer {
       min-height: 86px;
@@ -687,8 +689,21 @@
       font-size: 11px;
     }
 
-    .site-footer span:nth-child(2) { text-align: center; }
-    .site-footer span:last-child { text-align: right; }
+    .site-footer > span:nth-child(2) { text-align: center; }
+    .site-footer > span:last-child { text-align: right; }
+
+    .footer-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-2);
+    }
+
+    .footer-brand img {
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
+    }
 
     @media (max-width: 1000px) {
       .hero {
@@ -789,8 +804,7 @@
       .sequence p { grid-column: 2; }
 
       .past-grid,
-      .privacy-grid,
-      .release-grid {
+      .privacy-grid {
         grid-template-columns: 1fr;
       }
 
@@ -800,14 +814,21 @@
       .setup-crop { height: 700px; }
 
       .privacy-grid { gap: 52px; }
-      .release-grid { gap: 40px; }
 
       .release { padding-block: 88px; }
 
+      .release-meta { min-height: 56px; }
+
+      .release-main {
+        padding-block: 56px;
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .release-details { max-width: 520px; }
+
       .privacy-ledger { width: min(100%, 620px); }
       .privacy-orbit { width: 650px; right: -60%; bottom: -28%; }
-
-      .release-mark { max-width: 320px; }
 
       .site-footer {
         padding-block: 24px;
@@ -815,9 +836,9 @@
         gap: 9px;
       }
 
-      .site-footer span,
-      .site-footer span:nth-child(2),
-      .site-footer span:last-child { text-align: left; }
+      .site-footer > span,
+      .site-footer > span:nth-child(2),
+      .site-footer > span:last-child { text-align: left; }
     }
 
     @media (max-width: 480px) {
@@ -861,13 +882,13 @@
       .section-intro-copy h2,
       .past-copy h2,
       .privacy-copy h2,
-      .release-copy h2 {
+      .release-main h2 {
         font-size: clamp(2.6rem, 12vw, 3.5rem);
       }
 
       .section-intro-copy > p,
       .privacy-copy > p,
-      .release-copy > p,
+      .release-details > p,
       .past-explainer {
         font-size: 16px;
       }
@@ -889,23 +910,22 @@
 
       .past-grid { gap: 48px; }
       .privacy-grid { gap: 44px; }
-      .release-grid { gap: 32px; }
       .release { padding-block: 80px; }
+
+      .release-meta {
+        min-height: 52px;
+        font-size: 9px;
+      }
+
+      .release-main {
+        padding-block: 44px;
+        gap: 32px;
+      }
 
       .privacy-ledger div {
         min-height: 80px;
       }
 
-      .release-mark img {
-        width: 72px;
-        height: 72px;
-        border-radius: 18px;
-      }
-
-      .release-actions {
-        align-items: flex-start;
-        flex-direction: column;
-      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1058,16 +1078,16 @@
     </section>
 
     <section class="release" aria-labelledby="release-title">
-      <div class="release-grid shell">
-        <div class="release-mark">
-          <img src="assets/app-icon.png" alt="Anewly app icon" width="92" height="92" loading="lazy" decoding="async">
-          <p class="section-label">Anewly for iPhone</p>
+      <div class="release-shell shell">
+        <div class="release-meta" aria-hidden="true">
+          <span>Anewly for iPhone</span>
+          <span>Coming soon</span>
         </div>
 
-        <div class="release-copy">
+        <div class="release-main">
           <h2 id="release-title">Coming soon to the App Store.</h2>
-          <p>Questions about the app? Email <a href="mailto:hello@anewly.app">hello@anewly.app</a>.</p>
-          <div class="release-actions">
+          <div class="release-details">
+            <p>Questions about the app? Email <a href="mailto:hello@anewly.app">hello@anewly.app</a>.</p>
             <div class="release-status" role="status" aria-label="Anewly iPhone download coming soon">
               <img class="release-status__icon" src="assets/app-icon.png" alt="" width="40" height="40" loading="lazy">
               <span class="release-status__copy">
@@ -1082,7 +1102,7 @@
   </main>
 
   <footer class="site-footer shell">
-    <span>© 2026 Anewly</span>
+    <span class="footer-brand"><img src="assets/app-icon.png" alt="" width="28" height="28" loading="lazy"><span>© 2026 Anewly</span></span>
     <span>Private by design</span>
     <span>Made for iPhone</span>
   </footer>
